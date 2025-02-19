@@ -27,10 +27,8 @@ public class ListExercises {
     public static List<Integer> common(List<Integer> L1, List<Integer> L2) {
         List<Integer> commom = new ArrayList<>();
         for (Integer i : L1) {
-            for (Integer j : L2) {
-                if (L1.get(i) == L2.get(j)) {
-                    commom.add(L1.get(i));
-                }
+            if (L2.contains(i)){
+                commom.add(i);
             }
         }
         return commom;
@@ -41,8 +39,10 @@ public class ListExercises {
     public static int countOccurrencesOfC(List<String> words, char c) {
         int counnt = 0;
         for (String i : words) {
-            if (i == Character.toString(c)) {
-                counnt++;
+            for (int j=0; j<i.length(); j++){
+                if (i.charAt(j) == c){
+                    counnt++;
+                }
             }
         }
         return counnt;
