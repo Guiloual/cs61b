@@ -7,10 +7,10 @@ public class CS61BStudent { // Class Declaration
         this.grade = 100;
     }
     public boolean watchLecture() { // Instance Method
-            // Returns whether the student actually watched the lecture
+        // Returns whether the student actually watched the lecture
 
     }
     public static String getInstructor() { // Static Method
-
+        return instructor;
     }
 }
