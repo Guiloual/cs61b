@@ -113,7 +113,17 @@ public class Model {
         // TODO: Task 3. Fill in this function.
         int maxTile = 0;
 
-        
+        for (int i=0; i < board.size(); i++) {
+            for (int j=0; j< board.size(); j++){
+                Tile t = board.tile(i,j);
+                if (t != null){
+                    if (t.value() > maxTile){
+                        maxTile = t.value();
+                    }
+                }
+            }
+        }
+
 
 
 
