@@ -222,16 +222,29 @@ public class Model {
         int targetY = y;
 
         // TODO: Tasks 5, 6, and 10. Fill in this function.
-        int countStep = 0;
+        //int countStep = 0;
         for (int j=y+1; j< board.size(); j++){
             if (board.tile(x,j) == null) {
-                countStep += 1;
+                targetY += 1;
             }
 
         }
-        targetY = y + countStep;
 
+        if (targetY < board.size()-1) {
+            if (board.tile(x,y).value() == board.tile(x,targetY+1).value() && !board.tile(x,targetY+1).wasMerged()) {
+                targetY += 1;
+            }
+        }
+
+        //if (y + countStep == board.size()-1) {
+        //} else if () {
+
+        //}
+
+        //targetY = y + countStep;
         board.move(x,targetY, currTile);
+
+
 
 
         //for (int i=board.size()-1; i >= 1; i--) {
