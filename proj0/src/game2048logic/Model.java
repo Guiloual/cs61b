@@ -142,6 +142,61 @@ public class Model {
      */
     public boolean atLeastOneMoveExists() {
         // TODO: Fill in this function.
+
+
+        if (emptySpaceExists()) {return true;}
+        else {
+            for (int i=0; i < board.size(); i++){
+                for (int j=0; j < board.size(); j++) {
+                    int t = board.tile(i,j).value();
+                    if (i == 0 && j != 0 && j != board.size()-1) {
+                        if (t == board.tile(i,j+1).value() || t == board.tile(i,j-1).value() || t == board.tile(i+1,j).value()){
+                            return true;
+                        }
+                    } else if (i == board.size()-1 && j != 0 && j != board.size()-1) {
+                        if (t == board.tile(i,j+1).value() || t == board.tile(i,j-1).value() || t == board.tile(i-1,j).value()){
+                            return true;
+                        }
+                    } else if (j == 0 && i != 0 && i != board.size()-1) {
+                        if (t == board.tile(i+1,j).value() || t == board.tile(i-1,j).value() || t == board.tile(i,j+1).value()){
+                            return true;
+                        }
+                    } else if (j == board.size()-1 && i != 0 && i != board.size()-1) {
+                        if (t == board.tile(i+1,j).value() || t == board.tile(i-1,j).value() || t == board.tile(i,j-1).value()){
+                            return true;
+                        }
+                    } else if (i == 0 && j == 0) {
+                        if (t == board.tile(i,j+1).value() || t == board.tile(i+1,j).value()){
+                            return true;
+                        }
+                    } else if (i == 0 && j == board.size()-1) {
+                        if (t == board.tile(i+1,j).value() || t == board.tile(i,j-1).value()){
+                            return true;
+                        }
+                    } else if (i == board.size()-1 && j == 0) {
+                        if (t == board.tile(i,j+1).value() || t == board.tile(i-1,j).value()){
+                            return true;
+                        }
+                    } else if (i == board.size()-1 && j == board.size()-1) {
+                        if (t == board.tile(i,j-1).value() || t == board.tile(i-1,j).value()){
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+
+                }
+
+
+
+            }
+
+
+
+
+            //return false;
+        }
+
         return false;
     }
 
