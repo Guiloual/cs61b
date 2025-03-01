@@ -259,6 +259,12 @@ public class Model {
      * */
     public void tiltColumn(int x) {
         // TODO: Task 7. Fill in this function.
+        for (int j = board.size()-1; j >= 0; j--) {
+            if (board.tile(x, j) != null) {
+                moveTileUpAsFarAsPossible(x, j);
+            }
+        }
+
     }
 
     public void tilt(Side side) {
