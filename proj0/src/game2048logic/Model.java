@@ -222,6 +222,21 @@ public class Model {
         int targetY = y;
 
         // TODO: Tasks 5, 6, and 10. Fill in this function.
+        int countStep = 0;
+        for (int j=y+1; j< board.size(); j++){
+            if (board.tile(x,j) == null) {
+                countStep += 1;
+            }
+
+        }
+        targetY = y + countStep;
+
+        board.move(x,targetY, currTile);
+
+
+        //for (int i=board.size()-1; i >= 1; i--) {
+
+        //}
     }
 
     /** Handles the movements of the tilt in column x of the board
