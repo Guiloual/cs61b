@@ -182,7 +182,9 @@ public class Model {
                             return true;
                         }
                     } else {
-                        return false;
+                        if (t == board.tile(i+1,j).value() || t == board.tile(i-1,j).value() || t == board.tile(i,j+1).value() || t == board.tile(i,j-1).value()) {
+                            return true;
+                        }
                     }
 
                 }
