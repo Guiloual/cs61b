@@ -145,7 +145,9 @@ public class Model {
 
 
         if (emptySpaceExists()) {return true;}
-        else {
+        else if (board.size()==1) {
+            return false;
+        } else {
             for (int i=0; i < board.size(); i++){
                 for (int j=0; j < board.size(); j++) {
                     int t = board.tile(i,j).value();
