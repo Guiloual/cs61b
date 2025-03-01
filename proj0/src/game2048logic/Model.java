@@ -223,6 +223,7 @@ public class Model {
 
         // TODO: Tasks 5, 6, and 10. Fill in this function.
         //int countStep = 0;
+
         for (int j=y+1; j< board.size(); j++){
             if (board.tile(x,j) == null) {
                 targetY += 1;
@@ -242,8 +243,9 @@ public class Model {
         //}
 
         //targetY = y + countStep;
-        board.move(x,targetY, currTile);
-
+        if (targetY != y) {
+            board.move(x, targetY, currTile);
+        }
 
 
 
@@ -269,6 +271,12 @@ public class Model {
 
     public void tilt(Side side) {
         // TODO: Tasks 8 and 9. Fill in this function.
+        for (int i=0; i < board.size(); i++) {
+            tiltColumn(i);
+        }
+
+
+
     }
 
     /** Tilts every column of the board toward SIDE.
