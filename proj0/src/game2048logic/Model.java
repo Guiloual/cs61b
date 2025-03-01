@@ -234,6 +234,7 @@ public class Model {
         if (targetY < board.size()-1) {
             if (board.tile(x,y).value() == board.tile(x,targetY+1).value() && !board.tile(x,targetY+1).wasMerged()) {
                 targetY += 1;
+                score += 2 * board.tile(x,y).value();
             }
         }
 
