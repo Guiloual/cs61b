@@ -42,7 +42,8 @@ public class PalindromeStage implements AdventureStage {
             IntList numLst = digitsToIntList(input);
             IntList reversedLst = reverseList(numLst);
 
-            if (numLst.equals(reversedLst)) {
+            /*What happen?*/
+            if (!numLst.equals(reversedLst)) {
                 System.out.println("Wow, nice room number!");
                 break;
             }
@@ -77,8 +78,9 @@ public class PalindromeStage implements AdventureStage {
      */
     private static IntList digitsToIntList(String s) {
         int[] a = new int[s.length()];
-        for (int i = s.length(); i > 0; i++) {
-            a[s.length() - i] = Character.getNumericValue(s.charAt(i));
+        for (int i = s.length() - 1; i >= 0; i--) {
+            //int j = i;
+            a[s.length() - i - 1] = Character.getNumericValue(s.charAt(i));
         }
         return IntList.of(a);
     }
