@@ -19,21 +19,25 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
     public Node sentinel;
 
     public LinkedListDeque61B() {
-        sentinel = new Node(sentinel, null, sentinel);
+        sentinel = new Node(null, null, null);
+        sentinel.first = sentinel;
+        sentinel.rest = sentinel;
         //sentinel = new Node(sentinel, null, sentinel);
     }
 
 
     @Override
     public void addFirst(T x) {
-        //sentinel.rest = new Node(sentinel, x, sentinel.rest);
-        if (sentinel.rest == null) {
-            sentinel.rest = new Node(sentinel, x, sentinel.rest);
-            sentinel.rest.rest = sentinel;
-            sentinel.first = sentinel.rest;
-        } else {
-            sentinel.rest = new Node(sentinel, x, sentinel.rest);
-        }
+        sentinel.rest = new Node(sentinel, x, sentinel.rest);
+        sentinel.rest.rest.first = sentinel.rest;
+        //if (sentinel.rest == sentinel) {
+            //sentinel.rest = new Node(sentinel, x, sentinel.rest);
+            //sentinel.rest.rest = sentinel;
+        //    sentinel.first = sentinel.rest;
+        //}
+        //else {
+        //   sentinel.rest = new Node(sentinel, x, sentinel.rest);
+        //}
 //        if (sentinel.rest == null) {
 //            sentinel.rest = new Node(sentinel, x, sentinel);
 //        } else {
@@ -43,14 +47,18 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
 
     @Override
     public void addLast(T x) {
+        sentinel.first.rest = new Node(sentinel.first, x, sentinel);
+        sentinel.first = sentinel.first.rest;
         //sentinel.first = new Node(sentinel.first, x, sentinel);
-        if (sentinel.first == null) {
-            sentinel.first = new Node(sentinel.first, x, sentinel);
-            sentinel.first.first = sentinel;
-            sentinel.rest = sentinel.first;
-        } else {
-            sentinel.first = new Node(sentinel.first, x, sentinel);
-        }
+
+        //if (sentinel.first == sentinel) {
+            //sentinel.first = new Node(sentinel.first, x, sentinel);
+            //sentinel.first.first = sentinel;
+        //    sentinel.rest = sentinel.first;
+        //}
+        //else {
+        //    sentinel.first = new Node(sentinel.first, x, sentinel);
+        //}
     }
 
     @Override
