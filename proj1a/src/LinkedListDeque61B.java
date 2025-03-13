@@ -17,11 +17,14 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
     }
 
     public Node sentinel;
+    public int size;
 
     public LinkedListDeque61B() {
         sentinel = new Node(null, null, null);
         sentinel.first = sentinel;
         sentinel.rest = sentinel;
+        q = sentinel;
+        size = 0;
         //sentinel = new Node(sentinel, null, sentinel);
     }
 
@@ -30,6 +33,7 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
     public void addFirst(T x) {
         sentinel.rest = new Node(sentinel, x, sentinel.rest);
         sentinel.rest.rest.first = sentinel.rest;
+        size += 1;
         //if (sentinel.rest == sentinel) {
             //sentinel.rest = new Node(sentinel, x, sentinel.rest);
             //sentinel.rest.rest = sentinel;
@@ -49,6 +53,7 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
     public void addLast(T x) {
         sentinel.first.rest = new Node(sentinel.first, x, sentinel);
         sentinel.first = sentinel.first.rest;
+        size += 1;
         //sentinel.first = new Node(sentinel.first, x, sentinel);
 
         //if (sentinel.first == sentinel) {
@@ -75,31 +80,57 @@ public class LinkedListDeque61B <T> implements Deque61B<T>{
 
     @Override
     public boolean isEmpty() {
-        return true;
+        if (sentinel.rest == sentinel) {return true;}
+        return false;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public T removeFirst() {
-        return null;
+        if (isEmpty()) {return null;}
+
+        T a = sentinel.rest.item;
+        sentinel.rest.rest.first = sentinel;
+        sentinel.rest = sentinel.rest.rest;
+        return a;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        if (sentinel.rest == sentinel) {return null;}
+
+        T a = sentinel.first.item;
+        sentinel.first.first.rest = sentinel;
+        sentinel.first = sentinel.first.first;
+        return a;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        if (index >= 0 && index < size && size > 0) {
+            Node p = sentinel.rest;
+            for (int i = 0; i < index; i++) {
+                p = p.rest;
+            }
+            return p.item;
+
+        } else {return null;}
     }
 
+    private Node q;
     @Override
     public T getRecursive(int index) {
-        return null;
+
+        if (index == 0) {
+            return q.rest.item;
+        } else if (index < 0 || index > size || size == 0) {
+            return null;
+        }
+        q = q.rest;
+        return getRecursive(index -1);
     }
 }

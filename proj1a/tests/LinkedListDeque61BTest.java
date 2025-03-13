@@ -218,8 +218,8 @@ public class LinkedListDeque61BTest {
         lld1.addFirst("d");
         lld1.addFirst("e");
 
-        assertThat(lld1.removeFirst()).isEqualTo("a");
+        assertThat(lld1.removeLast()).isEqualTo("a");
         assertThat(lld1.toList()).containsExactly("e","d","c","b");
     }
-    
+
 }
