@@ -2,6 +2,8 @@ import jh61b.utils.Reflection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Deque;
+
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
@@ -101,4 +103,46 @@ public class LinkedListDeque61BTest {
 
          assertThat(lld1.size()).isEqualTo(3);
     }
+
+    @Test
+    public void testGetWithSomeElements() {
+         Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+         lld1.addLast("a");
+         lld1.addLast("b");
+         lld1.addLast("c");
+         lld1.addLast("d");
+         lld1.addLast("e");
+
+         assertThat(lld1.get(2)).isEqualTo("c");
+    }
+
+    @Test
+    public void testGetWithEmpty() {
+         Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+
+         assertThat(lld1.get(0)).isNull();
+    }
+
+    @Test
+    public void testGetOutOfBounded() {
+        Deque61B<Integer> lld1= new LinkedListDeque61B<>();
+
+        lld1.addLast(100);
+
+        assertThat(lld1.get(122)).isNull();
+    }
+
+    @Test
+    public void testGetNegativeIndex() {
+         Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+
+         lld1.addLast(32);
+
+         assertThat(lld1.get(-1)).isNull();
+    }
+
+    
+
+
 }
