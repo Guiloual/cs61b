@@ -142,7 +142,84 @@ public class LinkedListDeque61BTest {
          assertThat(lld1.get(-1)).isNull();
     }
 
+    @Test
+    public void testRecursiveWithSomeElements() {
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+        lld1.addLast("a");
+        lld1.addLast("b");
+        lld1.addLast("c");
+        lld1.addLast("d");
+        lld1.addLast("e");
+
+        assertThat(lld1.getRecursive(2)).isEqualTo("c");
+    }
+
+    @Test
+    public void testRecursiveWithEmpty() {
+        Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+
+        assertThat(lld1.getRecursive(0)).isNull();
+    }
+
+    @Test
+    public void testRecursiveOutOfBounded() {
+        Deque61B<Integer> lld1= new LinkedListDeque61B<>();
+
+        lld1.addLast(100);
+
+        assertThat(lld1.getRecursive(122)).isNull();
+    }
+
+    @Test
+    public void testRecursiveNegativeIndex() {
+        Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+
+        lld1.addLast(32);
+
+        assertThat(lld1.getRecursive(-1)).isNull();
+    }
+
+    @Test
+    public void testRemoveFirstWithNoElement() {
+         Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+         assertThat(lld1.removeFirst()).isNull();
+    }
+
+    @Test
+    public void testRemoveLastWithNoElement() {
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+        assertThat(lld1.removeLast()).isNull();
+    }
+
+    @Test
+    public void testRemoveFirstWithElements() {
+         Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+         lld1.addLast("a");
+         lld1.addLast("b");
+         lld1.addLast("c");
+         lld1.addLast("d");
+         lld1.addLast("e");
+
+         assertThat(lld1.removeFirst()).isEqualTo("a");
+         assertThat(lld1.toList()).containsExactly("b","c","d","e");
+    }
+
+    @Test
+    public void testRemoveLastWithElements() {
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+        lld1.addFirst("a");
+        lld1.addFirst("b");
+        lld1.addFirst("c");
+        lld1.addFirst("d");
+        lld1.addFirst("e");
+
+        assertThat(lld1.removeFirst()).isEqualTo("a");
+        assertThat(lld1.toList()).containsExactly("e","d","c","b");
+    }
     
-
-
 }
